@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from 'react-bootstrap/Card'
+import ListGroup from 'react-bootstrap/ListGroup'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -14,17 +14,17 @@ class PostList extends React.Component{
     render() {
         const {id, title} = this.props
         return (
-            <div>
-                <Card className="mb-3">
-                    <Card.Body>
-                        <Link to={`posts/${id}`}>{title}</Link>
-                        <Button 
-                            className="btn btn-danger"
-                            onClick={ this.onDelete }  
-                        >Delete</Button>
-                    </Card.Body>
-                </Card>
-            </div>
+            <ListGroup.Item className="d-flex align-items-center"> 
+                <div className="flex-grow-1">
+                    {title}
+                </div>
+                <Link to={`posts/${id}`} className="btn btn-info mr-1">Edit</Link>
+                <Button 
+                    className="btn btn-danger"
+                    onClick={ this.onDelete }  
+                >Delete</Button>
+               
+            </ListGroup.Item>
         )
     }
 }

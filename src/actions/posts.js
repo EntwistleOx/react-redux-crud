@@ -26,11 +26,10 @@ export const fetchPost = (id) => ({
     id
 })
 
-export const updatePost = ({id, title, content}) => ({
+export const updatePost = (id, updates) => ({
     type: 'UPDATE_POST',
     id,
-    title,
-    content
+    updates
 })
 
 export const deletePost = (id) => ({

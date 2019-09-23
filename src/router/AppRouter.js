@@ -1,18 +1,20 @@
 import React from 'react'
 import { Route, BrowserRouter, Switch } from 'react-router-dom'
 import PostList from '../component/PostList'
-import PostDetails from '../component/PostDetails'
-import PostForm from '../component/PostForm'
+import AddPost from '../component/AddPost'
+import EditPost from '../component/EditPost'
 import NotFound from '../component/NotFound'
+import Header from '../component/Header'
 import Container from 'react-bootstrap/Container'
 
 const AppRouter = () => (
     <BrowserRouter>
         <Container>
+            <Header />
             <Switch>
                 <Route exact path="/" component={PostList} />
-                <Route path="/posts/:id" component={PostDetails} />
-                <Route path="/posts" component={PostForm} />
+                <Route path="/posts/:id" component={EditPost} />
+                <Route path="/posts" component={AddPost} />
                 <Route component={NotFound} />
             </Switch>
         </Container>

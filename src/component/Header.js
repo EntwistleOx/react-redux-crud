@@ -20,9 +20,8 @@ const Header = () => (
                 <NavLink to="/" activeClassName="is-active">Back to index</NavLink>
             </Nav>
             <NavLink to="/posts" activeClassName="is-active">
-                <Button variant="primary">New Post</Button>
+                <Button variant="primary">New Sighting</Button>
             </NavLink>
-            <Button variant="danger">Delete</Button>
         </Navbar>
     </header>
 );
