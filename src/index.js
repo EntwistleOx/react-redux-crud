@@ -1,12 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux'
+import AppRouter from './router/AppRouter';
+import configureStore from './store/configureStore'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { createPost, fetchPosts, fetchPost, deletePost } from './actions/posts'
+const store = configureStore()
 
-ReactDOM.render(<App />, document.getElementById('root'));
+store.dispatch(createPost({title: 'Test 1', content: 'Lorem ipsum atravilis 1'}))
+store.dispatch(createPost({title: 'Test 2', content: 'Lorem ipsum atravilis 2'}))
+store.dispatch(createPost({title: 'Test 3', content: 'Lorem ipsum atravilis 3'}))
+store.dispatch(createPost({title: 'Test 4', content: 'Lorem ipsum atravilis 4'}))
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// store.dispatch(fetchPosts())
+
+// store.dispatch(fetchPost(postOne.post.id))
+
+// store.dispatch(deletePost(postOne.post.id))
+
+// store.dispatch(fetchPosts())
+
+ReactDOM.render(
+                <Provider store={store}>
+                    <AppRouter />
+                </Provider>, 
+                document.getElementById('root'));
+
+                
