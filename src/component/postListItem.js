@@ -5,31 +5,20 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { deletePost } from '../actions/posts'
 
-class PostList extends React.Component{
+const PostList = (props) => (
+    <ListGroup.Item className="d-flex align-items-center"> 
+        <div className="flex-grow-1">
+            {props.title}
+        </div>
+        <Link to={`posts/${props.id}`} className="btn btn-info mr-1">Edit</Link>
+        <Button 
+            className="btn btn-danger"
+            onClick={props.deletePost}  
+        >Delete</Button>
+    </ListGroup.Item>
+)
 
-    onDelete = () => {
-        this.props.deletePost(this.props.id)
-    }
-
-    render() {
-        const {id, title} = this.props
-        return (
-            <ListGroup.Item className="d-flex align-items-center"> 
-                <div className="flex-grow-1">
-                    {title}
-                </div>
-                <Link to={`posts/${id}`} className="btn btn-info mr-1">Edit</Link>
-                <Button 
-                    className="btn btn-danger"
-                    onClick={ this.onDelete }  
-                >Delete</Button>
-               
-            </ListGroup.Item>
-        )
-    }
-}
-
-const mapDispatchToProps = {
-    deletePost
-}
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    deletePost: () => dispatch(deletePost(ownProps.id))
+})
 export default connect(null, mapDispatchToProps)(PostList)
